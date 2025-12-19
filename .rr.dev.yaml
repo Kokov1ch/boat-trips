@@ -1,0 +1,25 @@
+version: "3"
+
+rpc:
+    listen: tcp://127.0.0.1:6001
+
+server:
+    command: "php public/index.php"
+    env:
+        - APP_RUNTIME: Baldinof\RoadRunnerBundle\Runtime\Runtime
+
+http:
+    address: 0.0.0.0:8080
+    middleware: [ "static", "gzip" ]
+    uploads:
+        forbid: [ ".php", ".exe", ".bat" ]
+    static:
+        dir: "public"
+        forbid: [ ".php", ".htaccess" ]
+    pool:
+        debug: true
+        num_workers: 1
+
+logs:
+    mode: development
+    level: debug

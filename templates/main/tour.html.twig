@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ tour.full_title }} — Волны{% endblock %}
+
+{% block body %}
+    <main class="tour-detail">
+        <div class="container">
+            <div class="tour-grid">
+                <div class="tour-info">
+                    <div class="badge-hit inline">ХИТ</div>
+                    <h1 class="tour-title">{{ tour.full_title }}</h1>
+
+                    <div class="params-row">
+                        <div class="param-pill">
+                            <span class="dot purple"></span>
+                            {{ tour.duration }}
+                        </div>
+                        <div class="param-pill">
+                            <span class="dot purple"></span>
+                            {{ tour.price }} ₽/чел
+                        </div>
+                    </div>
+
+                    <div class="tour-description">
+                        <p>{{ tour.description }}</p>
+                    </div>
+
+                    <button class="btn btn-primary btn-large">Заказать</button>
+                </div>
+
+                <div class="tour-gallery">
+                    <div class="main-photo-wrapper">
+                        <div class="gallery-nav-dots">
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <img src="{{ asset('images/' ~ tour.image) }}" alt="" class="main-photo">
+                    </div>
+
+                    <div class="gallery-thumbnails">
+                        <button class="nav-arrow prev">←</button>
+{#                        <div class="thumb active"><img src="{{ asset('images/' ~ tour.image) }}"></div>#}
+{#                        <div class="thumb"><img src="{{ asset('images/' ~ tour.image) }}"></div>#}
+{#                        <div class="thumb"><img src="{{ asset('images/' ~ tour.image) }}"></div>#}
+                        <button class="nav-arrow next">→</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

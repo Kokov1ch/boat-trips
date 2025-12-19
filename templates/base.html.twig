@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Волны — Морские прогулки{% endblock %}</title>
+
+    {# Шрифты Montserrat #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    {% block stylesheets %}
+        {{ importmap('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ importmap('app') }}
+    {% endblock %}
+</head>
+<body>
+<div class="page-container">
+    {# Общая навигация для всех страниц #}
+    <nav class="navbar-wrapper">
+        <div class="container">
+            <div class="navbar">
+                <a href="{{ path('home') }}" class="logo">
+                    <img src="{{ asset('images/logo-icon.svg') }}" alt="">
+                    <span>Волны</span>
+                </a>
+                <div class="nav-menu">
+                    <a href="#routes">Маршруты</a>
+                    <a href="#fishing">Рыбалка</a>
+                    <a href="#reviews">Отзывы</a>
+                    <a href="#contacts">Контакты</a>
+                </div>
+                <div class="nav-phone">+7 (999) 123-45-67</div>
+            </div>
+        </div>
+    </nav>
+
+    {% block body %}{% endblock %}
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="logo">Волны</div>
+            <div class="footer-contacts">Контакты</div>
+            <div class="nav-phone">+7 (999) 123-45-67</div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

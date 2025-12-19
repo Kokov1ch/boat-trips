@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="page-wrapper">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-content">
+                    <div class="logo">
+                        <img src="{{ asset('images/logo.svg') }}" alt="Волны">
+                        <span>Волны</span>
+                    </div>
+                    <div class="nav-links">
+                        <a href="#">Маршруты</a>
+                        <a href="#">Рыбалка</a>
+                        <a href="#">Отзывы</a>
+                        <a href="#">Контакты</a>
+                    </div>
+                    <div class="nav-phone">+7 (999) 123-45-67</div>
+                </div>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <h1>Увлекательные морские прогулки по Приморскому краю</h1>
+                    <p>150 км. морских приключений за один день! Почувствуйте драйв и свободу открытого моря.</p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary">Заказать</button>
+                        <button class="btn btn-icon">
+                            <img src="{{ asset('images/tg-icon.svg') }}" alt="TG">
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="blob-shape"></div>
+                    <img src="{{ asset('images/boat-3d.png') }}" alt="Катер" class="boat-img">
+                </div>
+            </div>
+        </section>
+
+        <section class="routes-section">
+            <div class="container">
+                <h2 class="section-title">Маршруты</h2>
+                <div class="routes-slider">
+                    {% for slug, tour in tours %}
+                        <a href="{{ path('tour_detail', {slug: slug}) }}" class="route-card">
+                            <div class="card-image" style="background-image: url('{{ asset('images/' ~ tour.image) }}')">
+                                {% if tour.is_hit %}<span class="badge-hit">ХИТ</span>{% endif %}
+                            </div>
+                            <div class="card-info">
+                                <h3>{{ tour.title }}</h3>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
